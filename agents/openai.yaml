@@ -1,0 +1,4 @@
+interface:
+  display_name: "Isekai Now"
+  short_description: "Create isekai social-feed posts"
+  default_prompt: "Use $isekai-now to turn this scene into an isekai social-feed post."
