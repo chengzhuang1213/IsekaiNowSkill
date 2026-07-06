@@ -1,5 +1,9 @@
 ﻿# Isekai Now Example Pack
 
+## Finished Image Baseline
+
+For full finished-image tasks, use `assets/Samples/sample-airship-port-native-1206x2622.png` as the current approved sample. It demonstrates the preferred native iPhone 16 Pro poster layout: full `1206x2622` composition, themed in-world UI skin, large story-rich main image, local circular avatars, crisp local Chinese text, roomy lower comments, and bottom input controls.
+
 ## Camp Cooking
 
 **昵称**：南小鸟

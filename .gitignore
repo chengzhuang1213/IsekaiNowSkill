@@ -1,0 +1,7 @@
+output/
+scripts/__pycache__/
+*.pyc
+
+# Local one-off generation references.
+Ceras_Avatar_Reference.png
+ceras_moments_full.png

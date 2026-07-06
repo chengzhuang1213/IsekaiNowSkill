@@ -7,6 +7,7 @@ Separate three layers before prompting or composing:
 1. **Identity layer**: face, hair color, hairstyle, eye color, expression vibe, and recognizable personality. Preserve this from reference images or fixed avatars.
 2. **Library avatar layer**: the fixed small头像 may have a default isekai job, such as rose shield guardian or fire mage. This is only a reusable profile identity.
 3. **Current scene layer**: the main illustration must follow the user's current location, story, caption, and social joke. Scene clothing and props can change from the avatar job.
+4. **Local UI layer**: the finished social-feed poster should be composed locally whenever possible. This layer owns the readable Chinese UI text, likes, comments, comment bubbles, input field, theme border, and exact circular avatar crops from `assets/Avatars`.
 
 Never force avatar-job props into the main image when they do not serve the current post.
 
@@ -16,6 +17,7 @@ Never force avatar-job props into the main image when they do not serve the curr
 - Remove combat props from cozy scenes unless the joke is specifically about being overdressed or on guard.
 - For tea, cafe, bakery, inn, palace, market, classroom, sleepover, or date-like posts, prioritize scene props: cups, plates, pastries, menus, flowers, bags, books, small familiars, or tableware.
 - For ceremony, departure, battle, dungeon, rescue, or mission posts, allow weapons, shields, armor, banners, spell circles, and guild gear.
+- For social-joke scenes, include visible evidence that comments can react to: license paper, exam board, lost-and-found notice, warning sign, suspicious menu, treasure chest, mimic, measurement marks, item tag, or guild stamp.
 - If the caption creates a role for the moment, obey that role over the library job. Example: `公主的下午茶时间` means princess headpiece, elegant dress, tea table, and pastries. Do not add a shield unless the user asks for guardian/knight tension.
 - Headwear should match the scene: tiara/circlet/ribbon for princess scenes; mage hat for magic scenes; hood/cape for travel; helmet only for knight or battle scenes.
 
@@ -35,17 +37,21 @@ Ayumu Uehara as an isekai rose-themed princess at afternoon tea, preserving rose
 
 ## Main Image Aspect Ratio
 
-- For full social-feed screenshot generation, use a fixed output size of `1024x1536` unless the user explicitly requests another size. Keep all full screenshot outputs the same size across a batch or series.
+- For finished social-feed poster generation, use a fixed iPhone 16 Pro portrait output size of `1206x2622` px, ratio `19.5:9`, unless the user explicitly requests another size. Keep all finished outputs the same size across a batch or series.
+- Compose directly at `1206x2622`. Avoid rendering a shorter 1024-style layout and scaling it into the phone canvas; the native layout should use the extra height for a larger main illustration, expanded comment area, and bottom input controls.
+- Use `assets/Samples/sample-airship-port-native-1206x2622.png` as the approved native-layout reference for finished posters. Follow its use of a large main image plus an actively used lower half instead of leaving dead space below the comments.
 - For local UI composition, generate the main illustration as a wide rectangle whenever possible: prefer `1536x1024`, `1448x1086`, or another 3:2 to 4:3 image.
 - In the final Moments-style card, crop or fit the main image to a stable rectangle around **1.33:1 to 1.5:1**.
 - Do not let a square or vertical main image dominate the card unless the user specifically asks for a square post.
 - Keep the main image width aligned with the text column and leave comfortable white margins; the image should not feel wider than the social card's rhythm.
 - If the generated image has important content near the edges, use contain-with-padding or a gentler center crop instead of cutting faces, cups, hands, or story clues.
+- Do not generate the main illustration with the social app frame included. The main illustration can contain in-world text and props, but the post header, caption, likes, comments, avatars, and input bar belong to the local UI layer.
 
 ## Theme Skin And White Space
 
 - Select a theme skin from the post's location, activity, and caption instead of using a plain white social card by default.
 - Avoid large empty pure-white areas. Prefer ivory parchment, warm cream, pale rose, pale gold, mist blue, sage, washi, wood, stone, or night-sky UI treatments when they fit the scene.
+- The final image should feel like the whole canvas is the social status. Avoid a big white app card floating inside an unrelated fantasy background.
 - Break up light backgrounds with subtle paper grain, faint ornamental dividers, pale colored comment strips, small badges, scene-matching corner ornaments, or soft fantasy accents.
 - Make the main illustration carry enough visual weight; do not let blank card space dominate the screenshot.
 - Match ornaments to the theme: rose corners for palace tea, guild stamps for quests, leaves for forest posts, compass/shell details for ocean posts, moon-star dividers for gothic or astrology posts, sakura corners for shrine posts.
@@ -57,9 +63,13 @@ Ayumu Uehara as an isekai rose-themed princess at afternoon tea, preserving rose
 ## UI Composition Rules
 
 - Fixed post width should read like a social feed card, not a poster frame.
+- The finished artifact may be more polished than a literal phone screenshot: it can use themed paper texture, map lines, magical watermarks, border ornaments, and comment strips, as long as the content hierarchy still reads like a social feed.
 - Main image should usually start below the caption with enough breathing room and be visually subordinate to the full post, not fill nearly the whole card height.
 - Prioritize content hierarchy: header, caption, main image, likes, comments, and input field must be visually clearer than all background decoration.
 - Keep author avatar 72-88 px, comment avatars 42-50 px, and preserve circular crops.
-- For reliable screenshots, compose UI avatars locally from fixed PNG files instead of asking image generation to draw small portraits. Crop each avatar square to a circle, paste the poster avatar at 72-88 px, and paste comment avatars at 42-50 px. The generated image may provide the main illustration and theme background, but small UI avatars should come from the avatar library whenever available.
+- For reliable finished images, compose UI avatars locally from fixed PNG files instead of asking image generation to draw small portraits. Crop each avatar square to a circle, paste the poster avatar at 72-88 px, and paste comment avatars at 42-50 px. The generated image may provide the main illustration and theme background, but small UI avatars must come from the avatar library whenever available.
+- If a reference image or generated draft already has small avatars, replace those UI avatars with matching `assets/Avatars` circular crops. Do not keep generated small faces.
+- Render UI text locally for readability: poster name, location, caption, likes, comments, reply labels, and input placeholder. Avoid emoji that the selected font cannot display; replace with simple readable punctuation or symbols when needed.
 - Prefer 3-6 comments unless the user asks for many; comments should fit without crowding the input field.
-- Validate the final image visually for: no text overlap, no clipped UI, no wrong avatar, no irrelevant main-image prop, and main image aspect ratio matching the feed.
+- When the prompt includes 6-8 comments, use the native `1206x2622` height like the approved sample: keep each row readable, reduce blank footer space, and let comments occupy the lower half before the input bar.
+- Validate the final image visually for: no text overlap, no clipped UI, no wrong avatar, no large blank white card, no unreadable generated UI text, no irrelevant main-image prop, and main image aspect ratio matching the feed.

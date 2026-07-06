@@ -4,11 +4,15 @@
 
 Create a "social app post from inside another world": the UI is contemporary, while the content is fantasy slice-of-life. The humor comes from treating magical events as normal daily updates.
 
+For finished images, the target is an **isekai Moments poster**, not a literal app screenshot. The whole `1206x2622` iPhone 16 Pro portrait image should be the status: themed paper/map/stone texture, UI frame, main illustration, likes, comments, and input field all belong to one coherent designed interface.
+
 ## Visual Layout
 
-- Portrait screenshot, fixed full-image size `1024x1536` unless the user explicitly asks for another size. Keep every generated full social-feed screenshot at this same size for consistency across batches.
+- Portrait finished image, fixed full-image size `1206x2622` px, ratio `19.5:9`, unless the user explicitly asks for another size. Keep every finished social-feed image at this same size for consistency across batches.
+- Compose directly on the `1206x2622` production canvas. Do not build a shorter legacy layout first and scale it up with background padding; use the full vertical space with a larger main image, roomier comments, and a bottom input bar near the safe area.
 - Choose a theme skin from the post location, mood, and caption instead of defaulting to a mostly white app frame.
-- Use a readable rounded feed card with subtle shadow or thin border. The card may be ivory, parchment, mist-blue, blush, sage, or another pale theme color; avoid large empty pure-white areas.
+- Use a readable rounded feed frame with subtle shadow or thin border. The frame may be ivory, parchment, mist-blue, blush, sage, midnight violet, dark stone, or another theme color; avoid large empty pure-white areas.
+- The frame should not look like a big white card pasted onto a separate background. Let the background texture, border, post content, main image, comments, and input bar read as one integrated status design.
 - Treat the theme as a restrained skin behind the post. Use subtle texture, watermarks, dividers, border accents, and corner ornaments; do not add foreground badges or decorative marks that look like app controls.
 - Keep the top of the post compact. The author row and body text should not create a large blank area before the main image.
 - Decorative labels and stamps must stay away from the three-dot menu and text. They should be lower contrast than UI text and should never look clickable.
@@ -19,18 +23,33 @@ Create a "social app post from inside another world": the UI is contemporary, wh
 - Bottom: pale comment input field with placeholder like `评论...`.
 - Some variants can omit the separate body text and let the image carry the moment, with the caption-like comments below.
 
+## Satisfied Example Pattern
+
+When matching the preferred examples, prioritize these qualities:
+
+- Current approved finished-image sample: `assets/Samples/sample-airship-port-native-1206x2622.png`. Use it as the baseline for native long-screen spacing and lower-half utilization.
+- The background is an in-world UI skin, such as airship map paper, magic academy parchment, dark ruin stone, or starry archive paper.
+- The main illustration contains the social joke visually: a license, scoreboard, warning sign, certificate, treasure chest, magic accident, suspicious creature, or other readable story evidence.
+- The UI text is crisp and typeset, not model-painted. Render captions, likes, comments, and input placeholders locally whenever possible.
+- The main image is large but not the whole poster; comments and input remain clearly readable in the same vertical composition.
+- The poster avatar and every comment avatar are exact circular crops from `assets/Avatars`, replacing any generated small portraits from examples or image outputs.
+- The lower half should not be treated as leftover space. Use it for likes, roomy comment strips, and the bottom input bar.
+
 ## Theme Skin Selection
 
-For full screenshot prompts, choose the UI background and decorative skin from the post theme. The skin should color the background, dividers, comment blocks, and small ornaments while preserving the modern social-feed structure.
+For finished social-feed images, choose the UI background and decorative skin from the post theme. The skin should color the background, dividers, comment blocks, and small ornaments while preserving the modern social-feed structure.
 
 - Palace, princess, garden tea: ivory parchment, pale gold dividers, rose corner ornaments, soft blush comment blocks.
 - Magic academy, library, spell research: warm parchment, ink-blue headers, faint magic-circle watermark, book-page dividers.
 - Adventurer guild, quests, tavern: wooden notice-board background, parchment cards, wax seals, guild-stamp accents.
 - Forest, camping, elves, healing: pale sage background, leaf texture, vine corner ornaments, soft green comment blocks.
 - Ocean, port, ship, mermaid: pale aqua paper, compass icons, shell dividers, sea-map texture.
+- Airship, sky port, pilot license: pale sky-blue map paper, compass/propeller ornaments, thin gold navigation lines, cloud-like comment strips.
 - Night, astrology, gothic, fallen angel: deep violet or midnight gradient, moon-star ornaments, subtle glowing borders.
 - Shrine, kimono, cherry blossom: washi paper texture, vermilion dividers, sakura corner ornaments.
 - Dungeon, ruins, battle aftermath: dark stone or smoky parchment, torch-warm highlights, adventurer log styling.
+- Ancient stardust ruins, star gates, lost civilization: midnight blue parchment or stone texture, faint star maps, pale blue rune dividers, small light-particle ornaments.
+- Treasure, rare item discovery, mimic chest: dark violet or smoky parchment with gold trim, coin glints, chest-lock corner ornaments, warm comment blocks.
 - Bakery, cafe, sweets: cream background, coffee stain texture, pastry sticker accents.
 
 Avoid turning the post into a game menu, poster, or fantasy parchment letter. It should still read as a modern social app post from inside the isekai.
@@ -43,6 +62,14 @@ Avoid turning the post into a game menu, poster, or fantasy parchment letter. It
 - The poster avatar and all comment avatars should also be isekai-style portraits. They may be small circular crops, but they should still show fantasy clothing or accessories rather than plain modern uniforms.
 - When writing prompts, phrase this as: `based on the provided character reference for identity only, redesigned as an isekai adventurer portrait`.
 
+## Local Fonts
+
+- Prefer project fonts under `assets/Fonts` for local composition so outputs are portable across machines.
+- If available, use Maple Mono CN from `assets/Fonts/MapleMono-CN-unhinted/`:
+  - `MapleMono-CN-Regular.ttf` for body text, likes, comments, and input placeholders.
+  - `MapleMono-CN-Bold.ttf` or `MapleMono-CN-ExtraBold.ttf` for poster names, comment names, and strong UI labels.
+- Fall back to `NotoSansSC-VF.ttf` / `NotoSerifSC-VF.ttf` only when the project font is missing or a theme needs a serif parchment style.
+
 ## Image Style
 
 - Detailed anime / light novel illustration.
@@ -51,7 +78,7 @@ Avoid turning the post into a game menu, poster, or fantasy parchment letter. It
 - Also support grand public scenes such as knight order departure, castle gate speeches, royal banners, guards, and dramatic sunlight when the post is about a mission, ceremony, or adventure sendoff.
 - Include enough fantasy details: cloaks, lanterns, banners, runes, potions, familiar creatures, guild badges, medieval tents, enchanted cookware.
 - Keep the scene readable as a candid social photo, not a poster or wallpaper.
-- In-image text can be part of the joke: bakery chalkboards, motivational posters, speech bubbles, shop signs, royal banners, or cute warning labels. Keep it short and legible.
+- In-image text can be part of the joke: bakery chalkboards, motivational posters, speech bubbles, shop signs, royal banners, scoreboards, certificates, wanted notices, or cute warning labels. Keep it short and legible.
 
 ## Writing Voice
 
@@ -111,4 +138,9 @@ Use this structure:
 anime light novel illustration, cozy isekai slice-of-life, [characters and expressions], [fantasy location], [main activity], warm lantern/firelight, detailed props, candid social media photo feeling, rich background, expressive faces, high detail, no UI text inside the illustration
 ```
 
-If generating the whole screenshot, describe the UI separately from the illustration and ask for crisp Chinese UI text only if the image model can handle text reliably. Otherwise provide UI text as a layout guide and recommend adding text after generation.
+For finished social-feed images, prefer this two-stage pattern:
+
+1. Generate the main illustration only, with no social UI, no comments, no app frame, and no watermark. In-world signs or documents are allowed only when they are part of the joke.
+2. Compose the social-feed poster locally at `1206x2622`: themed background skin, exact circular avatars from `assets/Avatars`, crisp Chinese text, main image crop, likes line, comments, and bottom input field.
+
+Only ask the image model for the whole UI when local composition is impossible. If doing so, still treat generated UI text as a draft and replace unreadable text locally afterward.

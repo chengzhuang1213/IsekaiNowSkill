@@ -9,7 +9,9 @@
 
 Use fixed isekai character avatars whenever composing UI locally or when instructing image generation to reuse avatar assets. Use the bundled `assets/Avatars` files for poster avatars, comment avatars, and identity references.
 
-For final social-feed screenshots, do not rely on the image model to paint small comment avatars if local composition is possible. Generate or obtain the main illustration separately, then paste the exact avatar PNGs from `assets/Avatars` into the UI as circular crops. This is mandatory for comment avatars when the user cares about character identity stability.
+For final social-feed images, do not rely on the image model to paint small comment avatars if local composition is possible. Generate or obtain the main illustration separately, then paste the exact avatar PNGs from `assets/Avatars` into the UI as circular crops. This is mandatory for comment avatars when the user cares about character identity stability.
+
+When using a generated draft or a user-provided satisfied example as layout reference, replace every small UI头像 in that image with the matching bundled avatar crop. Keep the layout, theme, and typography direction if useful, but do not keep generated or mismatched small portrait faces.
 
 Treat the isekai role below as the avatar-library default identity. Use it for profile flavor, captions, quick character lookup, and UI avatar selection. In the main illustration, preserve identity but adapt clothing, props, and job details to the user's current scene.
 
