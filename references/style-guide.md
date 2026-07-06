@@ -1,4 +1,4 @@
-# Isekai Now Style Guide
+﻿# Isekai Now Style Guide
 
 ## Core Concept
 
@@ -9,7 +9,7 @@ Create a "social app post from inside another world": the UI is contemporary, wh
 - Portrait screenshot, fixed full-image size `1024x1536` unless the user explicitly asks for another size. Keep every generated full social-feed screenshot at this same size for consistency across batches.
 - Choose a theme skin from the post location, mood, and caption instead of defaulting to a mostly white app frame.
 - Use a readable rounded feed card with subtle shadow or thin border. The card may be ivory, parchment, mist-blue, blush, sage, or another pale theme color; avoid large empty pure-white areas.
-- Treat the theme as a restrained skin behind the post. Use subtle texture, watermarks, dividers, border accents, and corner ornaments; do not add foreground badges or symbols that look like app controls.
+- Treat the theme as a restrained skin behind the post. Use subtle texture, watermarks, dividers, border accents, and corner ornaments; do not add foreground badges or decorative marks that look like app controls.
 - Keep the top of the post compact. The author row and body text should not create a large blank area before the main image.
 - Decorative labels and stamps must stay away from the three-dot menu and text. They should be lower contrast than UI text and should never look clickable.
 - Top row: round anime avatar, blue display name, gray location with a pin icon, small three-dot menu.
@@ -37,7 +37,7 @@ Avoid turning the post into a game menu, poster, or fantasy parchment letter. It
 
 ## Character References
 
-- Default reference folder: `C:\Users\cheng\Desktop\异世界CG\asserts`.
+- Default reference folder: `assets/Avatars`.
 - Use the reference images to preserve each character's face shape, hairstyle, hair color, eye color, expression range, and recognizable vibe.
 - Do not copy the modern school-uniform look into the final post unless explicitly requested. Translate the character into an isekai outfit: cloak, traveler tunic, mage robe, ranger cape, guild brooch, potion satchel, armor accents, fantasy hair ornament, or camp/adventurer accessories.
 - The poster avatar and all comment avatars should also be isekai-style portraits. They may be small circular crops, but they should still show fantasy clothing or accessories rather than plain modern uniforms.

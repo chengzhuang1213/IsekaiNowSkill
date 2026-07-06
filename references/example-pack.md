@@ -1,4 +1,4 @@
-# Isekai Now Example Pack
+﻿# Isekai Now Example Pack
 
 ## Camp Cooking
 

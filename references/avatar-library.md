@@ -2,17 +2,14 @@
 
 ## Asset Paths
 
-- Character reference folder: `C:\Users\cheng\Desktop\异世界CG\asserts`
-- Fixed isekai avatar folder: `C:\Users\cheng\Desktop\异世界CG\asserts\Avatars`
-- Symbol folder: `C:\Users\cheng\Desktop\异世界CG\asserts\Symbols`
+- Character reference folder: `assets/Avatars`
+- Fixed isekai avatar folder: `assets/Avatars`
 
 ## Avatar Policy
 
-Use fixed isekai character avatars whenever composing UI locally or when instructing image generation to reuse avatar assets. Prefer real character avatars over symbols for comment avatars when the goal is intimacy, friend-group feeling, and character recognition.
+Use fixed isekai character avatars whenever composing UI locally or when instructing image generation to reuse avatar assets. Use the bundled `assets/Avatars` files for poster avatars, comment avatars, and identity references.
 
-Use symbols only as a fallback for tiny UI, decorative badges, or when the image model cannot keep small faces stable.
-
-For final social-feed screenshots, do not rely on the image model to paint small comment avatars if local composition is possible. Generate or obtain the main illustration separately, then paste the exact avatar PNGs from `C:\Users\cheng\Desktop\异世界CG\asserts\Avatars` into the UI as circular crops. This is mandatory for comment avatars when the user cares about character identity stability.
+For final social-feed screenshots, do not rely on the image model to paint small comment avatars if local composition is possible. Generate or obtain the main illustration separately, then paste the exact avatar PNGs from `assets/Avatars` into the UI as circular crops. This is mandatory for comment avatars when the user cares about character identity stability.
 
 Treat the isekai role below as the avatar-library default identity. Use it for profile flavor, captions, quick character lookup, and UI avatar selection. In the main illustration, preserve identity but adapt clothing, props, and job details to the user's current scene.
 

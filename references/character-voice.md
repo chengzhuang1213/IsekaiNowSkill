@@ -1,4 +1,4 @@
-# Isekai Now Character Voice
+﻿# Isekai Now Character Voice
 
 Use this file as the default voice guide for Love Live-style isekai social posts. If the user does not specify a special tone, write each character according to her official-style personality, adapted into casual Chinese social-post language.
 
