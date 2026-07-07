@@ -4,7 +4,7 @@
 
 Separate three layers before prompting or composing:
 
-1. **Identity layer**: face, hair color, hairstyle, eye color, expression vibe, and recognizable personality. Preserve this from reference images or fixed avatars.
+1. **Identity layer**: face, exact hair length, hair color, hairstyle, eye color, expression vibe, and recognizable personality. Preserve this from reference images or fixed avatars.
 2. **Library avatar layer**: the fixed small头像 may have a default isekai job, such as rose shield guardian or fire mage. This is only a reusable profile identity.
 3. **Current scene layer**: the main illustration must follow the user's current location, story, caption, and social joke. Scene clothing and props can change from the avatar job.
 4. **Local UI layer**: the finished social-feed poster should be composed locally whenever possible. This layer owns the readable Chinese UI text, likes, comments, comment bubbles, input field, theme border, and exact circular avatar crops from `assets/Avatars`.
@@ -15,13 +15,15 @@ Never force avatar-job props into the main image when they do not serve the curr
 
 Before generating any main illustration with a named Love Live-style character, inspect the bound avatar file from the avatar roster and write a strict identity lock. The lock must include:
 
-- hair color and hairstyle, including twin tails, bob cuts, long hair, bangs, colored tips, ribbons, goggles, clips, or other signature accessories
+- exact hair length and hairstyle, including short hair, bob cuts, shoulder-length hair, long hair, loose hair, tied hair, twin tails, side ponytails, bangs, colored tips, ribbons, goggles, clips, or other signature accessories
 - eye color and expression type
 - face/personality vibe from the avatar
 - fantasy role cues from the avatar-library table
 - explicit negative cues for likely confusions, especially the character from the previous generated image
 
-Do not rely on the character name alone. If the image model cannot receive the avatar file as a visual reference, the prompt still must spell out the exact visible anchors from the avatar. If the generated main character does not match those anchors, discard or regenerate the main illustration before local UI composition.
+Do not rely on the character name alone. Hair length is a hard identity anchor: a short-haired character generated with long hair, or a long-haired character generated with short hair, is a failed generation. If the image model cannot receive the avatar file as a visual reference, the prompt still must spell out the exact visible anchors from the avatar. If the generated main character does not match those anchors, discard or regenerate the main illustration before local UI composition.
+
+When a character has short hair, explicitly include negative cues such as `not long hair`, `not waist-length hair`, `not flowing long hair`, and `not ponytail` unless those are part of the user-requested transformation. When a character has tied or side-tied hair, distinguish whether the visible hair mass is short, shoulder-length, or long before prompting.
 
 Example for Rurino:
 
@@ -57,7 +59,7 @@ Ayumu Uehara as an isekai rose-themed princess at afternoon tea, preserving rose
 
 Before composing the finished social-feed poster, compare the generated main illustration against the poster avatar. Reject the main image when any of these fail:
 
-- wrong hair color or hairstyle
+- wrong hair length, hair color, or hairstyle
 - missing signature accessory when it is important to identity
 - wrong eye color when visible
 - face/silhouette clearly resembles another roster character or previous generated character
