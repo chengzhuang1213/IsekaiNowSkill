@@ -11,6 +11,24 @@ Separate three layers before prompting or composing:
 
 Never force avatar-job props into the main image when they do not serve the current post.
 
+## Identity Lock Before Generation
+
+Before generating any main illustration with a named Love Live-style character, inspect the bound avatar file from the avatar roster and write a strict identity lock. The lock must include:
+
+- hair color and hairstyle, including twin tails, bob cuts, long hair, bangs, colored tips, ribbons, goggles, clips, or other signature accessories
+- eye color and expression type
+- face/personality vibe from the avatar
+- fantasy role cues from the avatar-library table
+- explicit negative cues for likely confusions, especially the character from the previous generated image
+
+Do not rely on the character name alone. If the image model cannot receive the avatar file as a visual reference, the prompt still must spell out the exact visible anchors from the avatar. If the generated main character does not match those anchors, discard or regenerate the main illustration before local UI composition.
+
+Example for Rurino:
+
+```text
+Osawa Rurino identity lock from Rurino_Avatar_Isekai.png: blonde high twin tails with pink-and-blue tinted ends, bright blue eyes, goggles on head, flower/ribbon hair accessories, lively crystal-communication adventurer vibe, energetic streamer personality now exhausted. Avoid brown bob hair, avoid Kasumi-like face, avoid moon hair clip, avoid previous character design.
+```
+
 ## Prop And Costume Rules
 
 - Include props only if they support the post's action, punchline, or visible story hook.
@@ -26,7 +44,7 @@ Never force avatar-job props into the main image when they do not serve the curr
 Use this structure for main illustrations:
 
 ```text
-[Character name] as an isekai version for this specific scene, preserving [identity anchors]. Current-scene role: [scene role from user/caption]. Outfit and props: [only props that support this scene]. Avoid: [library-job props that would be off-scene].
+[Character name] as an isekai version for this specific scene, preserving [identity lock from bound avatar file]. Current-scene role: [scene role from user/caption]. Outfit and props: [only props that support this scene]. Avoid: [library-job props that would be off-scene] and [likely wrong-character anchors].
 ```
 
 Example:
@@ -34,6 +52,18 @@ Example:
 ```text
 Ayumu Uehara as an isekai rose-themed princess at afternoon tea, preserving rose-pink side-bun hair, yellow-green eyes, and gentle sincere smile. Outfit and props: elegant princess dress, small tiara or rose circlet, coffee cup, pastries, palace courtyard tea table. Avoid shield, battle armor, weapons, school uniform, modern phone.
 ```
+
+## Identity QA After Generation
+
+Before composing the finished social-feed poster, compare the generated main illustration against the poster avatar. Reject the main image when any of these fail:
+
+- wrong hair color or hairstyle
+- missing signature accessory when it is important to identity
+- wrong eye color when visible
+- face/silhouette clearly resembles another roster character or previous generated character
+- poster avatar and main image would read as different people to a viewer
+
+Do not solve a wrong main character by pasting the correct circular avatar in the UI. Regenerate or revise the main illustration first.
 
 ## Main Image Aspect Ratio
 

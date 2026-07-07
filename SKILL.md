@@ -10,10 +10,15 @@ Turn a fantasy or anime scene into a complete isekai social-feed poster. Preserv
 ## Workflow
 
 1. Identify the post seed: poster, location, scene, mood, hidden incident, and whether the user wants text only, image prompt only, or a full finished social-feed image.
-2. When generating Love Live-style characters, use this skill's bundled avatar library at `assets/Avatars` as the default character reference source. Treat these images as identity references for face, hair, color palette, fantasy role cues, and personality only.
-3. For any image prompt or full UI composition, read `references/image-composition.md` to separate avatar identity, current-scene costume, props, and UI aspect ratio. For UI composition, read `references/avatar-library.md` and use fixed isekai avatars when available. For reliable finished images, use a hybrid workflow: generate the main illustration without UI, then compose the whole social-feed poster locally with themed background skin, real rendered text, and circular avatar crops from `assets/Avatars`. Do not ask the image model to redraw tiny poster/comment avatars when local composition is possible. Before writing likes and comments, read `references/comment-voice.md` and `references/character-voice.md`; if the user does not specify a custom tone, use each character's default official-style personality and voice from `character-voice.md`.
-4. If the user provides an example image or asks to match the style closely, read `references/style-guide.md`. For the current approved production target, also read `references/sample-reference.md` and use `assets/Samples/sample-airship-port-native-1206x2622.png` as the sample for native long-screen spacing.
-5. Output a complete post package in Chinese unless the user asks for another language:
+2. Before writing or generating images, extract every named character from the user's request: poster, visible characters in the image, likes, comment authors, and characters mentioned inside comments. Read `references/avatar-library.md`, map each extracted character to its exact bundled avatar file in `assets/Avatars`, and keep this avatar roster as the identity source for the whole task. If a named Love Live-style character has no matching bundled avatar, state the missing mapping instead of silently substituting another character.
+3. Before generating a main illustration, visually inspect the poster's bound avatar file and write an identity lock from that image: hair color, hairstyle, eye color, signature accessories, expression/personality, and fantasy role cues. If the previous generated image or prior turn used a different character, add an explicit negative lock such as `not Kasumi, not brown bob hair, not previous character design`. A main image that does not visibly match the bound avatar identity is a failed generation and must not be used for final composition.
+4. When generating Love Live-style characters, use the extracted avatar roster and this skill's bundled avatar library at `assets/Avatars` as the default character reference source. Treat these images as identity references for face, hair, color palette, fantasy role cues, and personality only.
+5. For any image prompt or full UI composition, read `references/image-composition.md` to separate avatar identity, current-scene costume, props, and UI aspect ratio. For UI composition, use the extracted avatar roster and fixed isekai avatars when available. For reliable finished images, use a hybrid workflow: generate the main illustration without UI, then compose the whole social-feed poster locally with themed background skin, real rendered text, and circular avatar crops from `assets/Avatars`. Do not ask the image model to redraw tiny poster/comment avatars when local composition is possible. Before writing likes and comments, read `references/comment-voice.md` and `references/character-voice.md`; if the user does not specify a custom tone, use each character's default official-style personality and voice from `character-voice.md`.
+6. After generating a main illustration, compare the visible main character against the poster avatar roster entry before composing the UI. Check hair color, hairstyle, eye color, accessories, and overall silhouette. If any major identity anchor is wrong, discard or regenerate the main illustration instead of hiding the mismatch with correct UI avatars.
+7. If the user provides an example image or asks to match the style closely, read `references/style-guide.md`. For the current approved production target, also read `references/sample-reference.md` and use `assets/Samples/sample-airship-port-native-1206x2622.png` as the sample for native long-screen spacing.
+8. Output a complete post package in Chinese unless the user asks for another language:
+   - avatar roster when preparing image generation or local composition
+   - identity lock for the poster/main visible characters when preparing image generation
    - poster name
    - location line
    - post text
@@ -21,8 +26,8 @@ Turn a fantasy or anime scene into a complete isekai social-feed poster. Preserv
    - likes line
    - 3-8 comments
    - optional full finished-image plan
-6. Keep the post short, social, and character-voiced. Avoid lore dumps.
-7. Add a tiny story hook in the comments: ominous detail, comic misunderstanding, unseen creature, suspicious ingredient, magical accident, or rival teasing.
+9. Keep the post short, social, and character-voiced. Avoid lore dumps.
+10. Add a tiny story hook in the comments: ominous detail, comic misunderstanding, unseen creature, suspicious ingredient, magical accident, or rival teasing.
 
 ## Style Rules
 
@@ -41,6 +46,8 @@ Turn a fantasy or anime scene into a complete isekai social-feed poster. Preserv
 - In the post header, keep the poster's full official display name. In the likes and comment area, show character names as short given names only, not full names. Example: poster `上原步梦`; comments `步梦：...`, `善子：...`, `花帆：...`, `堇：...`, `真姬：...`.
 - Likes overlap rule: each post may have exactly one character who both liked and commented. Choose one commenter to also appear in the likes line; all other liked characters must be randomly chosen from characters who do not comment on that post. If the user provides a likes line that overlaps with multiple commenters, rewrite it to keep only one overlapping name.
 - For full social-feed images, always use fixed local avatar files for the poster and comment avatars whenever possible. Paste them into the UI as circular crops from `assets/Avatars` instead of relying on the image model to generate small faces. If adapting a generated or example UI, replace every small UI头像 with the matching bundled avatar.
+- Before any full social-feed image or image prompt, explicitly resolve the character identity roster from the request and bind each character to a concrete local avatar filename. Use those bound files for poster and comment avatars, and use the same roster to describe identity anchors in the main illustration prompt.
+- Main illustration identity must match the poster's bound avatar. Do not accept a main image whose visible character looks like a different avatar-library character, even if the caption, setting, or UI avatars are correct.
 - Convert all character appearances into isekai versions. The main image and every avatar should have fantasy clothing, accessories, or setting cues; do not keep modern school uniforms unless the user explicitly asks for a crossover.
 - The main illustration may include in-world Chinese signs, chalkboards, posters, banners, scoreboards, certificates, warning labels, and speech bubbles when they make the scene funnier or clearer.
 - Real UI text must be rendered locally whenever possible. Do not depend on image generation for readable captions, likes, comments, or input placeholders. Keep in-image generated text short and story-relevant only.

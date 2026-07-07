@@ -27,12 +27,17 @@ For finished images, the target is an **isekai Moments poster**, not a literal a
 
 When matching the preferred examples, prioritize these qualities:
 
-- Current approved finished-image sample: `assets/Samples/sample-airship-port-native-1206x2622.png`. Use it as the baseline for native long-screen spacing and lower-half utilization.
+- Current approved finished-image samples:
+  - `assets/Samples/sample-airship-port-native-1206x2622.png` for sky-port, travel, pilot-license, and pale map-paper layouts.
+  - `assets/Samples/sample-rurino-guild-native-1206x2622.png` for adventurer guild, quest-board comedy, tired social-post humor, strict character identity lock, standalone main illustration generation, and local avatar composition.
+  - `assets/Samples/sample-ayumu-palace-tea-native-1206x2622.png` for palace courtyard, princess afternoon tea, rose sweets, warm pink-gold UI, and compact four-comment layouts.
 - The background is an in-world UI skin, such as airship map paper, magic academy parchment, dark ruin stone, or starry archive paper.
 - The main illustration contains the social joke visually: a license, scoreboard, warning sign, certificate, treasure chest, magic accident, suspicious creature, or other readable story evidence.
 - The UI text is crisp and typeset, not model-painted. Render captions, likes, comments, and input placeholders locally whenever possible.
 - The main image is large but not the whole poster; comments and input remain clearly readable in the same vertical composition.
 - The poster avatar and every comment avatar are exact circular crops from `assets/Avatars`, replacing any generated small portraits from examples or image outputs.
+- The generated main illustration should visibly match the poster avatar identity. Use the Rurino guild sample as the reference for preserving hair color, hairstyle, eye color, signature accessories, and role cues across the avatar and main image.
+- Use the Ayumu palace tea sample as the reference for translating avatar identity into current-scene costume: the main image can use a princess dress and tea props while preserving Ayumu's rose-pink hair, side bun, yellow-green eyes, gentle expression, and rose identity.
 - The lower half should not be treated as leftover space. Use it for likes, roomy comment strips, and the bottom input bar.
 
 ## Theme Skin Selection

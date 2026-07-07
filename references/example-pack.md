@@ -2,7 +2,11 @@
 
 ## Finished Image Baseline
 
-For full finished-image tasks, use `assets/Samples/sample-airship-port-native-1206x2622.png` as the current approved sample. It demonstrates the preferred native iPhone 16 Pro poster layout: full `1206x2622` composition, themed in-world UI skin, large story-rich main image, local circular avatars, crisp local Chinese text, roomy lower comments, and bottom input controls.
+For full finished-image tasks, use these approved samples:
+
+- `assets/Samples/sample-airship-port-native-1206x2622.png`: preferred native iPhone 16 Pro poster layout for sky-port, travel, pilot-license, and pale map-paper scenes.
+- `assets/Samples/sample-rurino-guild-native-1206x2622.png`: preferred adventurer-guild layout with quest-board comedy, strict character identity lock, standalone main illustration generation, local circular avatars, crisp local Chinese text, roomy comments, and bottom input controls.
+- `assets/Samples/sample-ayumu-palace-tea-native-1206x2622.png`: preferred palace-courtyard tea layout with warm pink-gold skin, rose sweets, compact four-comment section, local circular avatars, and a main illustration that preserves the poster avatar identity while changing to current-scene costume.
 
 ## Camp Cooking
 

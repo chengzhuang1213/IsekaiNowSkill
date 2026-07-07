@@ -7,9 +7,21 @@
 
 ## Avatar Policy
 
+Before generating text, prompts, or finished images, extract a character roster from the user's request. Include the poster, characters visible in the image, comment authors, liked characters, and any character named inside the comments. Resolve every roster entry to the exact avatar filename below before composing UI or describing identity in an image prompt. For every character who appears in the main illustration, also record visible identity anchors from the avatar file, not just the filename.
+
 Use fixed isekai character avatars whenever composing UI locally or when instructing image generation to reuse avatar assets. Use the bundled `assets/Avatars` files for poster avatars, comment avatars, and identity references.
 
 For final social-feed images, do not rely on the image model to paint small comment avatars if local composition is possible. Generate or obtain the main illustration separately, then paste the exact avatar PNGs from `assets/Avatars` into the UI as circular crops. This is mandatory for comment avatars when the user cares about character identity stability.
+
+If a named Love Live-style character cannot be resolved to one of the bundled avatar filenames, state the missing character/avatar mapping and avoid silently substituting a visually similar or random character. If the user wants to proceed anyway, mark that character as a custom/non-library avatar.
+
+For main illustration generation, the avatar roster must be stricter than the UI roster. It must include a short identity lock like:
+
+```text
+大泽瑠璃乃 -> Rurino_Avatar_Isekai.png -> blonde high twin tails, blue eyes, goggles on head, pink/blue hair tips, lively crystal-communication adventurer
+```
+
+If a generated main image looks like another roster character, a previous prompt's character, or a generic anime girl instead of the bound avatar, reject it before composition.
 
 When using a generated draft or a user-provided satisfied example as layout reference, replace every small UI头像 in that image with the matching bundled avatar crop. Keep the layout, theme, and typography direction if useful, but do not keep generated or mismatched small portrait faces.
 
@@ -101,6 +113,8 @@ Treat the isekai role below as the avatar-library default identity. Use it for p
 
 ## Usage Rules
 
+- First create an avatar roster for the current post, mapping each extracted display name to the exact avatar file, for example `中须霞 -> Kasumi_Avatar_Isekai.png`.
+- For any character visible in the main illustration, extend the roster with visible identity anchors inspected from the avatar file.
 - Use the fixed avatar for the post author when available.
 - Use fixed avatars for comment authors when generating or composing a full social-feed UI. Prefer direct local placement over prompt-only avatar descriptions.
 - Use the role table to quickly infer avatar props, title flavor, and default isekai identity.

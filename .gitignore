@@ -1,4 +1,5 @@
 output/
+outputs/
 scripts/__pycache__/
 *.pyc
 

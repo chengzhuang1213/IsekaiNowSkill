@@ -1,6 +1,6 @@
 # Isekai Now Sample Reference
 
-## Approved Production Sample
+## Approved Production Samples
 
 Use this file when producing or revising a finished social-feed poster:
 
@@ -8,7 +8,15 @@ Use this file when producing or revising a finished social-feed poster:
 - Scenario: You Watanabe at the isekai royal airship port
 - Canvas: native `1206x2622` px, portrait, ratio `19.5:9`
 
-This sample is the current baseline for the full-poster format. It should guide spacing, hierarchy, avatar usage, and the relationship between the generated main illustration and the locally rendered social UI.
+- Sample image: `assets/Samples/sample-rurino-guild-native-1206x2622.png`
+- Scenario: Rurino Osawa at the isekai adventurer guild after missing A-rank commissions
+- Canvas: native `1206x2622` px, portrait, ratio `19.5:9`
+
+- Sample image: `assets/Samples/sample-ayumu-palace-tea-native-1206x2622.png`
+- Scenario: Ayumu Uehara at a royal palace courtyard afternoon tea
+- Canvas: native `1206x2622` px, portrait, ratio `19.5:9`
+
+These samples are the current baselines for the full-poster format. Use the airship sample for sky-port, travel, pilot-license, and pale map-paper layouts. Use the Rurino guild sample for adventurer guild, quest-board, tired comedy, strict character identity lock, standalone main illustration generation, and locally rendered UI avatars. Use the Ayumu palace tea sample for palace courtyard, princess, rose, cafe, sweets, warm pink-gold UI, and compact four-comment layouts.
 
 ## What To Preserve
 
@@ -22,10 +30,11 @@ This sample is the current baseline for the full-poster format. It should guide 
 - The bottom input bar sits near the safe area and feels like part of the same themed UI.
 - Poster avatar and comment avatars are exact circular crops from `assets/Avatars`.
 - UI text is crisp local text, not image-model-painted text.
+- When character identity matters, the main illustration must visibly match the poster avatar before UI composition. The Rurino guild sample demonstrates rejecting a wrong main character and regenerating with a stricter identity lock.
 
 ## Main Illustration Expectations
 
-The main illustration should carry the joke visually. In the sample, the license paper, airship, warning sign, port banner, and cheerful victory pose all support the caption and comments.
+The main illustration should carry the joke visually. In the airship sample, the license paper, airship, warning sign, port banner, and cheerful victory pose all support the caption and comments. In the Rurino guild sample, `今日任务已满`, the `301` ticket, the `凌晨5:00` note, the long queue, and unused equipment support the caption and comments. In the Ayumu palace tea sample, the coffee, rose pastries, palace courtyard, and `9999金币` price card support the princess tea caption plus green-tea and teasing comments.
 
 For future posts, include similarly visible story evidence when the user prompt allows it:
 
